@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/styles/main.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <title>{{ usuario.nm_usuario }}</title>
+    <style>
+      #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #customers td,
+      #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      #customers tr:hover {
+        background-color: #ddd;
+      }
+      #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4970ff;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="logo">
+          <h1>SCHEDULE</h1>
+        </div>
+        <div class="menu">
+          {% if usuario.cargo.id == 1 %}
+            <a href="#" class="selected">
+              <i class="material-icons">leaderboard</i><br/> Questões</a>
+            <a href="/turma/">
+              <i class="material-icons">view_list</i><br/>Turmas</a>
+            <a href="/turma/">
+              <i class="material-icons">face</i><br/>Professor</a>
+          {% else %}
+            <a href="/user/">
+              <i class="material-icons">face</i><br/>Aluno</a>
+          {% endif %}
+        </div>
+      </div>
+      <div id="profile-info">
+        <div class="profile-bio">
+          <h2 class="title">QUESTÕES</h2>
+        </div>
+        <div class="questoes-prontas">
+          <table id="customers">
+            <tr>
+              <th>Disciplina</th>
+              <th>Enunciado</th>
+              <th>Opção 1</th>
+              <th>Opção 2</th>
+              <th>Opção 3</th>
+              <th>Opção 4</th>
+              <th>Reposta</th>
+            </tr>
+            {% for questoes in questao %}
+              <tr>
+                <td>{{ questoes.id_disc }}</td>
+                <td>{{ questoes.enunciado }}</td>
+                <td>{{ questoes.resp1 }}</td>
+                <td>{{ questoes.resp2 }}</td>
+                <td>{{ questoes.resp3 }}</td>
+                <td>{{ questoes.resp4 }}</td>
+                <td>{{ questoes.respcerta }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </body>
+  </body>
+</html></body></html></body></html>

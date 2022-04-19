@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/styles/main.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <title>{{ usuario.nm_usuario }}</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="logo">
+          <h1>SCHEDULE</h1>
+        </div>
+        <div class="menu">
+          {% if usuario.cargo.id == 1 %}
+            <a href="/questoes">
+              <i class="material-icons">leaderboard</i><br/> Questões</a>
+            <a href="/turma/">
+              <i class="material-icons">view_list</i><br/>Turmas</a>
+            <a href="/user/" class="selected">
+              <i class="material-icons">face</i><br/>Professor</a>
+          {% else %}
+            <a href="/user/" class="selected">
+              <i class="material-icons">face</i><br/>Aluno</a>
+          {% endif %}
+        </div>
+      </div>
+      <div id="profile-info">
+        {% if usuario.cargo.id == 1 %}
+          <div class="notificacoes">
+            <i class="material-icons" id="noti">
+              notifications
+            </i>
+            <div class="not">
+              <div class="notification-bar">
+                {% for duvidas in duvida %}
+                  <div class="pergunta-list">
+                    <div class="enunciado">Questão: {{ duvidas.enunciado }}</div>
+                    <div class="duvida">Duvida: {{ duvidas.duvida }}</div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        <div class="profile-bio">
+          <h2 class="title">PERFIL</h2>
+          <div class="perfil">
+            <img src="https://i1.wp.com/terracoeconomico.com.br/wp-content/uploads/2019/01/default-user-image.png?ssl=1" alt=""/>
+            <div class="informacoes">
+              <h2 class="nome">{{ usuario.nm_usuario }}</h2>
+              <p>{{ usuario.cargo.nm_cargo }}</p>
+              <p>@{{ usuario.id }}</p>
+              <p>{{ usuario.biografia }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="to-dos">
+          <div class="oplista">
+            <h3 class="title-lista">Afazeres</h3>
+            {% if usuario.cargo.id == 1 %}
+              <i class="material-icons" id="teste">
+                add
+              </i>
+              <i class="material-icons" id="closeap">
+                close
+              </i>
+            {% endif %}
+          </div>
+          <div class="lista sc-5">
+            {% if atividade and usuario.cargo.nm_cargo != "Professor" %}
+              {% for atividades in atividade %}
+                {% if atividades.is_ativa %}
+                  <a href="/questionario/{{ atividades.idAtividade }}" class="atividade">
+                    <p>{{ atividades.nomeAtividade }}</p>
+                    <p style="text-align: right">{{ atividades.nomeTurma }}</p>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            {% elif atividade and usuario.cargo.id == 1 %}
+              {% for atividades in atividade %}
+                <a href="/avaliacao/{{ atividades.id }}" class="atividade">
+                  <p>{{ atividades.nm_atividade }}</p>
+                  <p style="text-align: right">{{ atividades.nm_turma }}</p>
+                </a>
+              {% endfor %}
+            {% else %}
+              <div class="empty">
+                <img src="https://img.icons8.com/carbon-copy/100/000000/calendar--v2.png"/>
+                <div>
+                  <h3>Vazio!</h3>
+                  <p>Você não possui atividades pendentes</p>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="insert-box-2">
+          <div class="box">
+            <h3>Selecione a tarefa que deseja encerrar</h3>
+            <form action="/encerraratividade" method="post">
+              <select name="id" id="turma">
+                {% for atividades in atividade %}
+                  <option value="{{ atividades.id }}">{{ atividades.nm_atividade }}</option>
+                {% endfor %}
+              </select>
+              <input type="submit" class="botao" id="cadastrar" value="Finalizar tarefa"/>
+            </form>
+          </div>
+        </div>
+        <div class="insert-box">
+          <div class="cadastrar-pergunta">
+            <h1>Criar atividade</h1>
+            <i class="material-icons" style=" position: fixed; top: 9px; left: 93%; cursor: pointer;" id="sla">
+              close</i>
+            <form action="/atividade" method="post">
+              <fieldset>
+                <legend>Questionario</legend>
+                <div class="input-block">
+                  <label for="turma">Turma</label>
+                  <select name="turma" id="turma">
+                    {% for turmas in turma %}
+                      <option value="{{ turmas.id }}">{{ turmas.nm_turma }}</option>
+                    {% endfor %}
+                  </select>
+                  <div class="input-block">
+                    <label for="nomeatividade">Nome da atividade</label>
+                    <input type="text" name="nomeatividade" placeholder="Nome atividade" required>
+                  </div>
+                </div>
+                <div class="simple">
+                  <div class="simple-list">
+                    <div class="input-block">
+                      <label for="enunciado">Enunciado</label>
+                      <input type="text" name="enunciado" placeholder="Digite o enunciado da questão" required>
+                    </div>
+                    <div class="input-block-list">
+                      <div class="resp-list">
+                        <label for="resp1">Resposta 1</label>
+                        <input type="text" name="resp1" placeholder="Digite a opção da questão" required>
+                      </div>
+                      <div class="resp-list">
+                        <label for="resp2">Resposta 2</label>
+                        <input type="text" name="resp2" placeholder="Digite o enunciado da questão" required>
+                      </div>
+                      <div class="resp-list">
+                        <label for="resp3">Resposta 3</label>
+                        <input type="text" name="resp3" placeholder="Digite o enunciado da questão" required>
+                      </div>
+                      <div class="resp-list">
+                        <label for="resp4">Resposta 4</label>
+                        <input type="text" name="resp4" placeholder="Digite o enunciado da questão" required>
+                      </div>
+                    </div>
+                    <div class="input-block">
+                      <label for="resp4">Resposta correta</label>
+                      <input type="text" name="respcerta" placeholder="Digite a resposta correta" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="add">
+                  <i class="material-icons" id="addQuestion">
+                    add
+                  </i>
+                </div>
+                <div class="input-block-button">
+                  <input type="submit" value="Criar atividade">
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <script src="/scripts/perfil.js"></script>
+      </body>
+    </body>
+  </body>
+</html>

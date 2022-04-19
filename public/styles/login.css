@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+}
+
+body {
+  background-color: #f8f8f8;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "IM FO";
+}
+
+#container .image-area {
+  grid-area: IM;
+}
+
+#container .image-area .triangle svg {
+  height: 90vh;
+  position: absolute;
+  bottom: 0;
+  left: -8vw;
+}
+
+#container .image-area .people svg {
+  height: 100vh;
+  position: absolute;
+  bottom: 0;
+  left: -2vw;
+}
+
+#container .form-area {
+  grid-area: FO;
+}
+
+#container .form-area form {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 30%;
+}
+
+option {
+  font-size: 20px;
+  padding: 20px;
+}
+
+#container .form-area form input {
+  color: #000000;
+  background: #ffffff;
+  border: 1px solid #000000;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 30px;
+  width: 640px;
+  padding: 10px 0;
+}
+
+#container .form-area form p {
+  text-align: justify;
+  font-size: 20px;
+  line-height: 32px;
+  width: 32rem;
+  margin-bottom: 30px;
+}
+
+#container .form-area form p > a {
+  text-decoration: none;
+  color: #0047ff;
+}
+
+#container .form-area form button {
+  width: 640px;
+  background: #36b7ff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  color: #ffffff;
+  font-size: 25px;
+  line-height: 35px;
+  padding: 19px 269px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/styles/main.css"/>
+    <link rel="stylesheet" href="/styles/quiz.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <title>Schedule-Turmas</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="logo">
+          <h1>SCHEDULE</h1>
+        </div>
+        <div class="menu">
+          <a href="/turma/1">
+            <i class="material-icons">view_list</i><br/>Turma</a>
+          <a href="/user/2">
+            <i class="material-icons">face</i><br/>Professor</a>
+        </div>
+      </div>
+      <div style="background-color: #263eac" id="profile-info center">
+        <div class="questionario">
+          <div class="title-questionario" id="titulo">
+            Resolva a equação b^2 - 4.a.c
+          </div>
+          <div class="perguntas">
+            <div class="opcao" id="opcao" data-answer="a">
+              <div class="texto" id="pergunta">10</div>
+            </div>
+            <div class="opcao" id="opcao" data-answer="b">
+              <div class="texto" id="pergunta">10</div>
+            </div>
+            <div class="opcao" id="opcao" data-answer="c">
+              <div class="texto" id="pergunta">10</div>
+            </div>
+            <div class="opcao" id="opcao" data-answer="d">
+              <div class="texto" id="pergunta">10</div>
+            </div>
+          </div>
+        </div>
+        <button class="duvida">Relatar Duvida</button>
+        <img class="personagem" src="/images/teste.svg" alt=""/>
+        <div class="answer-box">
+          <div class="answer">
+            <h3>Parabens Reposta correta</h3>
+            <button id="fechar">Confirmar</button>
+          </div>
+        </div>
+        <div class="fduvidas">
+          <div class="textoduvida">
+            <textarea placeholder="Fale um pouco sobre a sua duvida" cols="30" rows="10" id="duvida_banco"></textarea>
+            <button id="fduvida">Enviar</button>
+          </div>
+        </div>
+        <form role="form" id="questionario" action="/questionario" method="POST">
+          <input type="hidden" name="request" id="request" value="{{ questao }}"/>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="/scripts/script.js"></script>
+</html>

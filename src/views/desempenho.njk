@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/styles/teste.css"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages: ["bar"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          [
+            "Acertos", "Acertos", "Erros"
+          ],
+          [
+            "Questão 1", 10, 20
+          ],
+          [
+            "Questão 2", 5, 8
+          ],
+          [
+            "Questão 3", 12, 20
+          ],
+          [
+            "Questão 4", 9, 10
+          ]
+        ]);
+        var options = {
+          chart: {
+            title: "Avaliação da atividade",
+            subtitle: "Quantidade de acertos por questão"
+          },
+          vAxis: {
+            viewWindowMode: "explicit",
+            viewWindow: {
+              max: 30,
+              min: 0
+            }
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById("columnchart_material"));
+        chart.draw(data, google
+          .charts
+          .Bar
+          .convertOptions(options));
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <title>Teste</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="logo">
+          <h1>SCHEDULE</h1>
+        </div>
+        <div class="menu">
+          <a href="#" class="selected">
+            <i class="material-icons">leaderboard</i><br/> Questões</a>
+          <a href="/turma/">
+            <i class="material-icons">view_list</i><br/>Disciplina</a>
+          <a href="/user">
+            <i class="material-icons">face</i><br/>Professor</a>
+        </div>
+      </div>
+      <div id="profile-info">
+        <div class="notificacoes">
+          <i class="material-icons">
+            notifications
+          </i>
+        </div>
+        <div class="grafico">
+          <div id="chart_div">
+            <div id="columnchart_material" style="width: 900px; height: 300px"></div>
+            <div id="columnchart_material" style="width: 900px; height: 300px"></div>
+            <div id="columnchart_material" style="width: 900px; height: 300px"></div>
+            <div id="columnchart_material" style="width: 900px; height: 300px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

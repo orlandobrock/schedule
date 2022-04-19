@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/styles/main.css"/>
+    <title>Turmas</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div class="logo">
+          <h1>SCHEDULE</h1>
+        </div>
+        <div class="menu">
+          <a href="/questoes">
+            <i class="material-icons">leaderboard</i><br/> Questões</a>
+          <a href="#" class="selected">
+            <i class="material-icons">view_list</i><br/>Turmas</a>
+          <a href="/user/">
+            <i class="material-icons">face</i><br/>Professor</a>
+        </div>
+      </div>
+      <div class="profile-bio">
+        <div id="profile-info">
+          <h2 class="title">TURMAS</h2>
+        </div>
+        {% if turma.length != 0 %}
+          <div class="empty-turma">
+            <button type="button" id="sla">Criar turma agora</button>
+          </div>
+        {% endif %}
+        <div class="flex">
+          {% if turma.length != 0 %}
+            {% for turmas in turma %}
+              <div class="todo">
+                <div class="turma-info">
+                  <h3 class="title-lista">{{ turmas.nm_turma }}</h3>
+                  <i class="material-icons" id="adicionar" data-turma="{{ turmas.id }}">add</i>
+                </div>
+                <div class="lista">
+                  {% for turmas in turmas.aluno %}
+                    <a href="/user/{{ turmas.id }}">
+                      <div class="atividade">
+                        <div class="flex-itens">
+                          <img
+                            class="turma"
+                            src="https://i1.wp.com/terracoeconomico.com.br/wp-content/uploads/2019/01/default-user-image.png?ssl=1"
+                            alt=""/>
+                          <p>{{ turmas.nm_usuario }}</p>
+                        </div>
+                      </div>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="empty-turma">
+              <h2>Você não leciona nenhuma turma</h2>
+              <button type="button" id="sla">Criar turma agora</button>
+              <img src="/images/empty.svg" height="900">
+            </div>
+          {% endif %}
+        </div>
+        <div class="insert-box">
+          <div class="box">
+            <i class="material-icons" id="close">close</i>
+            <form id="colocar" action="/turma/{{ turma[0].id_professor }}" data-id="{{ turma[0].id_professor }}" method="post">
+              <div class="formulario">
+                <input type="text" name="identificacao" id="identi" placeholder="Digite o codigo de identificação do aluno"/>
+                <input type="hidden" name="id_turma" id="ids"/>
+                <div class="alert" role="alert"></div>
+                <input type="button" class="botao" id="cadastrar" value="Cadastrar"/>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="turma-box">
+        <div class="box">
+          <form id="colocar" action="/turma/cad" method="post">
+            <div class="formulario">
+              <input type="text" name="nome" id="identi" placeholder="Qual o nome da disciplina"/>
+              <div class="alert" role="alert"></div>
+              <input type="submit" class="botao" id="cadastrar" value="Criar turma"/>
+            </form>
+          </div>
+        </div>
+      </div>
+      <script src="/scripts/turma.js"></script>
+    </body>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+.questionario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .title-questionario {
+    font-size: 30px;
+  }
+
+  .perguntas {
+    display: flex;
+    margin-top: 60px;
+    flex-direction: column;
+
+    .opcao {
+      background-color: rgb(54, 183, 255, 70%);
+      margin: 40px;
+      border-radius: 40px;
+      padding: 20px 250px 20px 20px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background-color: #6365da;
+      }
+    }
+  }
+}
+
+.personagem {
+  position: relative;
+  top: -277px;
+  left: 74%;
+  height: 800px;
+}
+
+.duvida {
+  padding: 20px 40px 20px 40px;
+  border: none;
+  border-radius: 40px;
+  background-color: rgb(54, 183, 255, 70%);
+  color: white;
+  font-size: 24px;
+  position: fixed;
+  top: 871px;
+  left: 197px;
+  cursor: pointer;
+}
+
+.answer-box {
+  background-color: rgb(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  display: none;
+
+  .answer {
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    padding: 30px 40px;
+    background-color: #4154ae;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+
+    button {
+      margin-top: 100px;
+      width: 100px;
+      padding: 20px 10px;
+      background-color: rgb(54, 183, 255, 70%);
+      color: white;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: #6365da;
+      }
+    }
+  }
+}
+
+.fduvidas {
+  background-color: rgb(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  display: none;
+
+  .textoduvida {
+    height: 403px;
+    width: 501px;
+    border-radius: 10px;
+    padding: 30px 40px 0;
+    background-color: #4154ae;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+
+    button {
+      width: 250px;
+      padding: 20px 10px;
+      background-color: #263eac;
+      color: white;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+  }
+}
+
+.botao {
+  width: 250px;
+  padding: 20px 10px;
+  background-color: #263eac;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.fduvidas .textoduvida button:hover,
+.botao:hover {
+  background-color: #314fd4;
+}
+
+.fduvidas .textoduvida textarea {
+  border: none;
+  border-radius: 2px;
+  resize: none;
+  font-size: 15px;
+  height: 290px;
+  width: 440px;
+  padding: 10px;
+}
+
+.ver {
+  display: block;
+}
