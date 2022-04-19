@@ -1,18 +1,18 @@
 const express = require("express");
-const routes = require("./routes");
+const routes = require("./src/routes.js");
 const server = express();
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
-require("./config/auth")(passport);
-const Usuario = require("./models/tb_usuario");
+require("./src/config/auth.js")(passport);
+const Usuario = require("./src/models/tb_usuario.js");
 const methodOverride = require("method-override");
 
-const initializePassport = require("./config/auth");
+const initializePassport = require("./src/config/auth");
 initializePassport(passport);
 
 global.users = [];
-require("./database");
+require("./src/database");
 
 const nunjucks = require("nunjucks");
 nunjucks.configure("src/views", {
