@@ -4,7 +4,7 @@
   "description": "Uma plataforma de acompanhamento pedagogico aprimorada",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "node src/server.js"
   },
   "author": "Orlando Brock",
   "license": "ISC",
