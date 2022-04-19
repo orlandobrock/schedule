@@ -121,8 +121,4 @@ routes.get(
   usuarioController.questoes
 );
 
-app.get("/api/some/path", (req, res) => {
-  res.send("wow, it actually worked");
-});
-
 module.exports = routes;

@@ -1,18 +1,18 @@
 const express = require("express");
-const routes = require("./src/routes.js");
+const routes = require("./routes");
 const server = express();
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
-require("./src/config/auth.js")(passport);
-const Usuario = require("./src/models/tb_usuario.js");
+require("../src/config/auth")(passport);
+const Usuario = require("../src/models/tb_usuario");
 const methodOverride = require("method-override");
 
-const initializePassport = require("./src/config/auth");
+const initializePassport = require("../src/config/auth");
 initializePassport(passport);
 
 global.users = [];
-require("./src/database");
+require("./database");
 
 const nunjucks = require("nunjucks");
 nunjucks.configure("src/views", {
@@ -39,4 +39,4 @@ server
     next();
   })
   .use(routes)
-  .listen(5050);
+  .listen(5000);
